@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150315214242) do
+=======
+ActiveRecord::Schema.define(version: 20150308201918) do
+>>>>>>> Adds omniauth-twitter for authentication
 
   create_table "links", force: :cascade do |t|
     t.string   "short_url"
@@ -31,8 +35,11 @@ ActiveRecord::Schema.define(version: 20150315214242) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "uid"
+<<<<<<< HEAD
     t.string   "twitter_token"
     t.string   "twitter_secret"
+=======
+>>>>>>> Adds omniauth-twitter for authentication
   end
 
 end
