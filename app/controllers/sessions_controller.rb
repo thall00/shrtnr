@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   include SessionsHelper
-  
+
   def direct
     if signed_in?
       redirect_to dashboard_path
