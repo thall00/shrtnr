@@ -3,7 +3,7 @@ require 'spec_helper'
 describe UsersController, type: :controller do
 
   let(:user) { create(:user) }
-  let(:attributes) { user.attributes }
+  let(:attributes) { attributes_for :user }
 
   describe "#new" do
     it "is successfull" do
@@ -14,7 +14,6 @@ describe UsersController, type: :controller do
 
   describe "#create" do
     it "changes count" do
-      attributes[:password] = "password"
       expect { post :create, user: attributes }.to change(User, :count).by(1)
     end
   end
