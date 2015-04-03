@@ -2,3 +2,17 @@
 
 This is a small URL shortening app for the Advanced Topics in Ruby on Rails class for the University of Washington.
 
+=== Week 1
+
+Homework (due before next class):
+* Write integration tests for creating a short URL and creating a User
+* Email me your team and class project idea
+* Start thinking about a lightning talk
+
+Slides: [https://speakerdeck.com/benwoodall/uw-advanced-rails-week-1](https://speakerdeck.com/benwoodall/uw-advanced-rails-week-1)
+
+Extra:
+* [Self - The current/default object](http://rubylearning.com/satishtalim/ruby_self.html)
+* [Practical Object-Oriented Design in Ruby by Sandi Metz](http://www.poodr.com/)
+* [Agile Web Development in Rails 4](https://pragprog.com/book/rails4/agile-web-development-with-rails-4)
+* [has_secure_password](http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html)
