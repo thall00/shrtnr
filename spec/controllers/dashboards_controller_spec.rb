@@ -7,7 +7,7 @@ describe DashboardsController, type: :controller do
 
   describe "#index" do
     it "is successful" do
-      sign_in(user)
+      sign_in user
       get :index
       expect(response).to be_success
     end
