@@ -25,7 +25,8 @@ class LinksController < ApplicationController
     if @link.save
       redirect_to link_path(@link.short_url), notice: "URL added"
     else
-      render root_url, error: "Your URL was not valid"
+      flash[:error] = "Your URL was not valid"
+      redirect_to root_path
     end
   end
 
