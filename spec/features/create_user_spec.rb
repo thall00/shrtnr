@@ -46,7 +46,6 @@ describe "creating a user" do
     it "tells the user they made a mistake" do
       expect(page).to have_content "Email has already been taken"
     end
-    #test_user.destroy
 
   end
 end
