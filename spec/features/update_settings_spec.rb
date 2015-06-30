@@ -5,6 +5,7 @@ describe "updating settings" do
 
     before do
       visit "/settings"
+      puts page.body
       fill_in "Name", with: "Test"
       fill_in "Email", with: "test@test.com"
       click_button "Submit"
