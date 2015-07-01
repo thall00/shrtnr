@@ -5,6 +5,7 @@ describe "updating settings" do
     let(:user) { create(:user) }
 
     before do
+      login_as user
       visit "/settings"
       #puts page.body
       fill_in "Name", with: "Test"
