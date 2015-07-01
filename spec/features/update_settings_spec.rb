@@ -13,14 +13,12 @@ describe "updating settings" do
       click_button "Update"
     end
 
-    it "tells the user they have updated their settings" do
-      #expect(page).to have_content "Successfully updated settings"
+    it "tellss the user they have updated their settings" do
+      expect(page).to have_content "Successfully updated settings"
     end
     it "sends them to the settings page" do
-      #expect(current_path).to eq "/settings"
+      expect(current_path).to eq "/settings"
     end
   end
-  context "with valid params" do
-
-  end
+  
 end
