@@ -9,6 +9,7 @@ describe SettingsController, type: :controller do
     allow(self.controller).to receive(:current_user).and_return(user)
   end
 
+
   describe "#index" do
     it "is successful" do
       get :index
