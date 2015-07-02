@@ -6,7 +6,7 @@ describe SettingsController, type: :controller do
 
   
   before do
-    allow(self.controller).to receive(:current_user).and_return(user)
+    sign_in(user)
   end
 
 
@@ -17,13 +17,6 @@ describe SettingsController, type: :controller do
     end
   end
 
-
-
-  # describe "#home" do
-  #   it "is successful" do
-  #     get :home
-  #     expect(response).to be_success
-  #   end
-  # end
+  
 
 end
