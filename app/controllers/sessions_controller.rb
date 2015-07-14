@@ -27,10 +27,30 @@ class SessionsController < ApplicationController
   def twitter
     # raise request.env["omniauth.auth"].to_yaml
     auth = request.env["omniauth.auth"]
-    user = User.where(uid: auth["uid"]).first || User.from_twitter(auth)
-    session[:user_id] = user.id
-    flash[:notice] = "You have been logged in through Twitter."
-    redirect_back_or root_url
+    puts "***auth = #{auth}"
+    
+    # puts "***"
+    # puts "twitter_user = #{twitter_user}"
+    # puts "twitter_user.uid = #{twitter_user.uid}"
+    # puts "***"
+    # puts "current_user = #{current_user}"
+    # puts "@current_user = #{@current_user}"
+    if signed_in?
+      twitter_user = User.from_twitter(auth)
+      # user = User.where(email: session[:email]).first
+      # user.uid = twitter_user.uid
+      @current_user.uid = twitter_user.uid
+      @current_user.save
+      puts "@current_user.uid = #{@current_user.uid} "
+      twitter_user.destroy
+      flash[:notice] = "You have added your Twitter account  ."
+      redirect_back_or root_url
+    else
+      user = User.where(uid: auth["uid"]).first || User.from_twitter(auth)
+      session[:user_id] = user.id
+      flash[:notice] = "You have been logged in through Twitter."
+      redirect_back_or root_url
+    end
   end
 
   def failure
