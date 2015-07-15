@@ -27,24 +27,19 @@ class SessionsController < ApplicationController
   def twitter
     # raise request.env["omniauth.auth"].to_yaml
     auth = request.env["omniauth.auth"]
-    puts "***auth = #{auth}"
     
-    # puts "***"
-    # puts "twitter_user = #{twitter_user}"
-    # puts "twitter_user.uid = #{twitter_user.uid}"
-    # puts "***"
-    # puts "current_user = #{current_user}"
-    # puts "@current_user = #{@current_user}"
     if signed_in? && @current_user.uid.nil?
-      twitter_user = User.from_twitter(auth)
-      # user = User.where(email: session[:email]).first
-      # user.uid = twitter_user.uid
-      @current_user.uid = twitter_user.uid  
-      @current_user.name = twitter_user.name
+      @current_user.uid = auth.uid  
+      @current_user.name = auth.info.nickname
       @current_user.save
-      puts "@current_user.uid = #{@current_user.uid} "
-      twitter_user.destroy
       flash[:notice] = "You have successfully added your Twitter account."
+      redirect_back_or root_url
+    elsif signed_in?
+      # if the user already has a Twitter account setup and wants to replace/update it:
+      @current_user.uid = auth.uid  
+      @current_user.name = auth.info.nickname
+      @current_user.save
+      flash[:notice] = "You have successfully updated your Twitter account info."
       redirect_back_or root_url
     else
       user = User.where(uid: auth["uid"]).first || User.from_twitter(auth)
