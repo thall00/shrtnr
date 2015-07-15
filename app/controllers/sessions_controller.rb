@@ -35,15 +35,16 @@ class SessionsController < ApplicationController
     # puts "***"
     # puts "current_user = #{current_user}"
     # puts "@current_user = #{@current_user}"
-    if signed_in?
+    if signed_in? && @current_user.uid.nil?
       twitter_user = User.from_twitter(auth)
       # user = User.where(email: session[:email]).first
       # user.uid = twitter_user.uid
-      @current_user.uid = twitter_user.uid
+      @current_user.uid = twitter_user.uid  
+      @current_user.name = twitter_user.name
       @current_user.save
       puts "@current_user.uid = #{@current_user.uid} "
       twitter_user.destroy
-      flash[:notice] = "You have added your Twitter account  ."
+      flash[:notice] = "You have successfully added your Twitter account."
       redirect_back_or root_url
     else
       user = User.where(uid: auth["uid"]).first || User.from_twitter(auth)
