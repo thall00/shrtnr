@@ -7,4 +7,8 @@ class UserMailer < ApplicationMailer
     mail(to: user.email, subject: "Welcome to Shortener!")
   end
 
+  def update_email(user)
+    
+  end
+
 end
