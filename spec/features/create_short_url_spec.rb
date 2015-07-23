@@ -3,6 +3,7 @@ require 'spec_helper'
 describe "creating a short url" do
 
   context "when not signed in" do
+<<<<<<< HEAD
 
     before do
       visit "/home"
@@ -16,6 +17,22 @@ describe "creating a short url" do
     end
     it "takes the user to the links/link page" do
       expect(current_path).to_not eq "/home"
+=======
+    before do
+      visit "/home"
+    end
+
+    it "fails if url is not valid" do
+      fill_in "link[long_url]", with: "nonsense"
+      click_button "Shorten It!"
+      expect(page).to have_content "Your URL was not valid"
+    end
+
+    it "creates a short_url if valid" do
+      fill_in "link[long_url]", with: "http://google.com"
+      click_button "Shorten It!"
+      expect(page).to have_content "URL added"
+>>>>>>> upstream/week2
     end
   end
 
@@ -24,6 +41,7 @@ describe "creating a short url" do
 
     before do
       login_as user
+<<<<<<< HEAD
       visit "/home"
       #puts page.body
       fill_in "long_url", with: "http://www.google.com"
@@ -35,6 +53,28 @@ describe "creating a short url" do
     end
     it "takes the user to the links/link page" do
       expect(current_path).to_not eq "/home"
+=======
+      visit "/dashboard"
+    end
+
+    it "fails if url is not valid" do
+      fill_in "link[long_url]", with: "nonsense"
+      click_button "Shorten It!"
+      expect(page).to have_content "Your URL was not valid"
+    end
+
+    it "creates a short_url if valid" do
+      fill_in "link[long_url]", with: "http://google.com"
+      click_button "Shorten It!"
+      expect(page).to have_content "URL added"
+    end
+
+    it "adds link to dashboard" do
+      fill_in "link[long_url]", with: "http://google.com"
+      click_button "Shorten It!"
+      visit "/dashboard"
+      expect(page).to have_content "http://google.com"
+>>>>>>> upstream/week2
     end
   end
 end
