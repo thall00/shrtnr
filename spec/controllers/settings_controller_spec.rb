@@ -28,6 +28,7 @@ describe SettingsController, type: :controller do
         expect(response).to redirect_to(login_url)
       end
     end
+    
 
     context "when signed in" do
       before do

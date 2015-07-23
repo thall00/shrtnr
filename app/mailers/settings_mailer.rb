@@ -1,6 +1,6 @@
 class SettingsMailer < ApplicationMailer
-  default from: "mail@benwoodall.com"
-  
+  default from: "timhall@someemail.com"
+
   def update_email(user)
     attachments.inline['logo.png'] = File.read("#{Rails.root}/public/assets/logo.png")
     @user = user
