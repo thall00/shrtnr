@@ -5,12 +5,13 @@ describe SettingsController, type: :controller do
   let(:attributes) { attributes_for :user }
 
   
-  before do
-    sign_in(user)
-  end
+  
 
 
   describe "#index" do
+    before do
+    sign_in(user)
+  end
     it "is successful" do
       get :index
       expect(response).to be_success
