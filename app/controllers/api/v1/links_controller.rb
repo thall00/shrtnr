@@ -12,4 +12,5 @@ class Api::V1::LinksController < Api::BaseController
       render json: { errors: @link.errors }
     end
   end
+
 end
