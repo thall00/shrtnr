@@ -18,7 +18,6 @@
 /tmp
 /tags
 
-
 # Ignore secrets!
 /config/secrets.yml
 /config/twitter.yml
