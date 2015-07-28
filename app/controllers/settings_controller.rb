@@ -20,7 +20,7 @@ class SettingsController < ApplicationController
   def new_api
     @settings.generate_api_key
     @settings.save
-    redirect_to settings_url, notice: "Successfully updated API key"
+    redirect_to settings_url, notice: "You now have a new API key."
   end
 
   private
